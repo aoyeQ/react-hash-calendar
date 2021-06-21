@@ -29,6 +29,7 @@ const defaultProps = {
   disabledClassName: '', // 日期被禁用时的 className
   notCurrentMonthDayClassName: '', // 不是当前展示月份日期的 className(例如日历前面几天与后面几天灰色部分)
   calendarTitleHeight: 60, // 操作栏高度
+  value: new Date(), // 当前选中的日期
   defaultDate: new Date(),
   weekStart: 'Sunday',
   markType: 'dot', // 日期标记类型
@@ -130,6 +131,7 @@ class Calendar extends React.Component<
       weekStart,
       onRef,
       defaultDate,
+      value,
       isShowWeekView,
       disabledWeekView,
     } = this.props;
@@ -299,6 +301,30 @@ class Calendar extends React.Component<
 
     return dateArr;
   }
+
+  setCheckedDate = (date: Date) => {
+    const { checkedDate, isShowWeek, transitionDuration } = this.state;
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const day = date.getDate();
+    this.setState(
+      {
+        checkedDate: { ...checkedDate, day, month, year },
+        yearOfCurrentShow: year,
+        monthOfCurrentShow: month,
+      },
+      () => {
+        this.calculateCalendarOfThreeMonth(year, month);
+      }
+    );
+
+    if (isShowWeek) {
+      setTimeout(() => {
+        this.setState({ isTouching: true });
+        this.showWeek();
+      }, transitionDuration * 1000);
+    }
+  };
 
   today = () => {
     const { checkedDate, isShowWeek, transitionDuration } = this.state;
@@ -480,11 +506,8 @@ class Calendar extends React.Component<
   touchMove = (event: React.TouchEvent) => {
     event.stopPropagation();
 
-    const {
-      touchStartPositionX,
-      touchStartPositionY,
-      calendarRef,
-    } = this.state;
+    const { touchStartPositionX, touchStartPositionY, calendarRef } =
+      this.state;
     const calendarHeight = (calendarRef && calendarRef.offsetHeight) || 0;
     const calendarWidth = (calendarRef && calendarRef.offsetWidth) || 0;
     const { disabledWeekView, touchMoveCallback } = this.props;
@@ -783,12 +806,8 @@ class Calendar extends React.Component<
     const { currentChangeIsScroll, checkedDate } = this.state;
     const { scrollChangeDate } = this.props;
 
-    const {
-      lastMonthYear,
-      lastMonth,
-      nextMonthYear,
-      nextMonth,
-    } = this.getNearYearAndMonth(year, month);
+    const { lastMonthYear, lastMonth, nextMonthYear, nextMonth } =
+      this.getNearYearAndMonth(year, month);
 
     this.setState({
       lastMonthYear,
@@ -839,12 +858,8 @@ class Calendar extends React.Component<
 
     const { weekStartIndex, calendarDaysTotalLength } = this.state;
 
-    const {
-      lastMonthYear,
-      lastMonth,
-      nextMonthYear,
-      nextMonth,
-    } = this.getNearYearAndMonth(year, month);
+    const { lastMonthYear, lastMonth, nextMonthYear, nextMonth } =
+      this.getNearYearAndMonth(year, month);
 
     // 如果当月第一天不是指定的开始星期名称，则在前面补齐上个月的日期
     let dayOfWeek = this.getDayOfWeek(year, month);
@@ -946,10 +961,10 @@ class Calendar extends React.Component<
       : calendarItemHeight * 6;
 
     const weekNode: React.ReactNode = (
-      <div className="calendar_week" ref={this.weekTitleRef}>
+      <div className='calendar_week' ref={this.weekTitleRef}>
         {calendarWeek.map((item) => (
-          <div className="calendar_item" key={`week-${item}`}>
-            <p className="calendar_day">
+          <div className='calendar_item' key={`week-${item}`}>
+            <p className='calendar_day'>
               {(weekSlot && weekSlot(item)) || item}
             </p>
           </div>
@@ -1008,7 +1023,7 @@ class Calendar extends React.Component<
           </div>
           <div
             style={{ background: this.markDateColor(date, 'dot') }}
-            className="calendar_dot"
+            className='calendar_dot'
           ></div>
         </div>
       ));
@@ -1018,7 +1033,7 @@ class Calendar extends React.Component<
       <ul style={{ transform: `translate3d(${-translateIndex * 100}%, 0, 0)` }}>
         {calendarOfMonthShow.map((item, index) => (
           <li
-            className="calendar_group_li"
+            className='calendar_group_li'
             key={`group-${index}`}
             style={{
               transform: `translate3d(${
@@ -1035,7 +1050,7 @@ class Calendar extends React.Component<
 
     const calendarBodyNode = (
       <div
-        className="calendar_group"
+        className='calendar_group'
         style={{ height: `${calendarGroupHeight}px` }}
         ref={this.calendarRef}
         onTouchStart={this.touchStart}
@@ -1048,7 +1063,7 @@ class Calendar extends React.Component<
 
     return show ? (
       <div
-        className="calendar_body"
+        className='calendar_body'
         style={{ marginTop: calendarTitleHeight + 'px' }}
       >
         {weekNode}

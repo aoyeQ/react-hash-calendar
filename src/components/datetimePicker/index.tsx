@@ -15,6 +15,7 @@ const defaultProps = {
   visible: false, // 是否显示日历组件
   isShowAction: true, // 是否显示日历组件操作栏
   showTodayButton: true, // 是否显示返回今日按钮
+  value: new Date(), // 当前选中的时间
   defaultDatetime: new Date(), // 默认时间
   disabledDate: (date: Date) => false, // 禁用的日期
   lang: 'CN', // 使用的语言包
@@ -185,6 +186,14 @@ class ReactHashCalendar extends React.Component<
     calendarRef && calendarRef.today();
   };
 
+  setCheckedDate = (date: Date) => {
+    const { value, disabledDate } = this.props;
+    if (disabledDate(new Date())) return;
+
+    const { calendarRef } = this.state;
+    calendarRef && calendarRef.setCheckedDate(date || value);
+  };
+
   confirm = () => {
     const { format, model, lang, dateConfirmCallback } = this.props;
     const { checkedDate } = this.state;
@@ -317,6 +326,7 @@ class ReactHashCalendar extends React.Component<
       actionSlot,
       confirmSlot,
       defaultDatetime,
+      value,
     } = this.props;
 
     const {
@@ -360,8 +370,8 @@ class ReactHashCalendar extends React.Component<
     );
 
     const actionNode: React.ReactNode = actionSlot || (
-      <div className="calendar_title" ref={this.calendarTitleRef}>
-        <div className="calendar_title_date">
+      <div className='calendar_title' ref={this.calendarTitleRef}>
+        <div className='calendar_title_date'>
           {pickerType !== 'time' ? dateNode : ''}
           {pickerType !== 'date' ? timeNode : ''}
         </div>
@@ -376,7 +386,7 @@ class ReactHashCalendar extends React.Component<
           </div>
         ) : null}
         {model === 'dialog' ? (
-          <div className="calendar_confirm" onClick={this.confirm}>
+          <div className='calendar_confirm' onClick={this.confirm}>
             {confirmSlot || language.CONFIRM}
           </div>
         ) : null}
@@ -394,7 +404,7 @@ class ReactHashCalendar extends React.Component<
         onClick={this.close}
       >
         <div
-          className="calendar_content"
+          className='calendar_content'
           style={{ height: `${calendarContentHeight}px` }}
           onClick={this.stopEvent}
         >
@@ -403,6 +413,7 @@ class ReactHashCalendar extends React.Component<
             onRef={this.onCalendarRef}
             {...this.props}
             defaultDate={defaultDatetime}
+            value={value}
             calendarTitleHeight={calendarTitleHeight}
             show={isShowCalendar}
             slideChangeCallback={this.slideChange}
