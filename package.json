@@ -1,15 +1,19 @@
 {
-  "name": "react-hash-calendar",
-  "version": "0.1.2",
-  "author": "HashTang",
+  "name": "@xiao-edu/react-mobile-calendar",
+  "version": "0.0.1",
+  "author": "aoyeQ",
+  "maintainers": [
+    "aoyeQ",
+    "HashTang"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/TangSY/react-hash-calendar.git"
+    "url": "git+https://gitlab.xinghuolive.com/bi-fe/react-mobile-calendar.git"
   },
   "bugs": {
-    "url": "https://github.com/TangSY/react-hash-calendar/issues"
+    "url": "https://gitlab.xinghuolive.com/bi-fe/react-mobile-calendar/issues"
   },
-  "homepage": "https://www.hxkj.vip",
+  "homepage": "https://gitlab.xinghuolive.com/bi-fe/react-mobile-calendar.git",
   "license": "MIT",
   "description": "react 周 月 时间选择器",
   "main": "lib/index.js",

@@ -1,7 +1,10 @@
-[![version](https://img.shields.io/npm/v/react-hash-calendar.svg)](https://www.npmjs.com/package/react-hash-calendar)
-[![download](https://img.shields.io/npm/dt/react-hash-calendar.svg)](https://www.npmjs.com/package/react-hash-calendar)
-![license](https://img.shields.io/badge/license-MIT-blue.svg)
-[![author](https://img.shields.io/badge/author-HashTang-orange.svg)](https://www.hxkj.vip)
+<!--
+ * @Description: 
+ * @Date: 2021-06-21 16:34:44
+ * @Author: aoye.qin
+ * @LastEditors: aoye.qin
+ * @LastEditTime: 2021-06-21 18:18:18
+-->
 
 [简体中文](https://github.com/TangSY/react-hash-calendar/blob/master/README-zh_CN.md) | English
 
@@ -47,9 +50,8 @@ export default App;
 
 online demo：[https://www.hxkj.vip/demo/react-calendar/](https://www.hxkj.vip/demo/react-calendar/)
 
-- 🎉 can you give me a star? 🎉
 
-### github link：[https://github.com/TangSY/react-hash-calendar](https://github.com/TangSY/react-hash-calendar)
+### fork github link：[https://github.com/TangSY/react-hash-calendar](https://github.com/TangSY/react-hash-calendar)
 
 ## API
 
@@ -85,10 +87,4 @@ online demo：[https://www.hxkj.vip/demo/react-calendar/](https://www.hxkj.vip/d
 | confirmSlot         | Customize dconfirmate button content and style                                                                                                                                                                              | () => React.ReactNode                 |       -        |
 | actionSlot          | Customize action content and style                                                                                                                                                                                          | () => React.ReactNode                 |       -        |
 
-### Other
 
-- If there are other problems or incompatible functions. Can communicate by email 't@tsy6.com', or GitHub submits the issue.
-
-### Sponsor
-
-![pay.jpg](https://www.hxkj.vip/demo/calendar/pay.jpg)

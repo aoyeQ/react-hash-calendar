@@ -1,7 +1,3 @@
-[![version](https://img.shields.io/npm/v/react-hash-calendar.svg)](https://www.npmjs.com/package/react-hash-calendar)
-[![download](https://img.shields.io/npm/dt/react-hash-calendar.svg)](https://www.npmjs.com/package/react-hash-calendar)
-![license](https://img.shields.io/badge/license-MIT-blue.svg)
-[![author](https://img.shields.io/badge/author-HashTang-orange.svg)](https://www.hxkj.vip)
 
 简体中文 | [English](https://github.com/TangSY/react-hash-calendar/blob/master/README-en_US.md)
 
@@ -19,6 +15,8 @@ vue 版本同款日历：[https://github.com/TangSY/vue-hash-calendar](https://g
 - 上下滑动 切换 周/月 模式
   > 【周模式中】 左右滑动可切换 上一周/下一周
   > 【月模式中】 左右滑动可切换 上一月/下一月
+
+- 本项目fork github 地址：[https://github.com/TangSY/react-hash-calendar](https://github.com/TangSY/react-hash-calendar)
 
 # 安装使用说明
 
@@ -44,10 +42,6 @@ export default App;
 ![demo_qrcode.png](https://www.hxkj.vip/demo/react-calendar/demo.png)
 
 或者请用浏览器的手机模式查看：[https://www.hxkj.vip/demo/react-calendar/](https://www.hxkj.vip/demo/react-calendar/)
-
-- 🎉 觉得好用可以给一个 star 哦~~ 🎉
-
-## github 地址：[https://github.com/TangSY/react-hash-calendar](https://github.com/TangSY/react-hash-calendar)
 
 # API
 
@@ -85,8 +79,5 @@ export default App;
 
 ## Other
 
-- 如果有其他问题， 或者功能上不兼容的。可以邮件沟通 t@tsy6.com，或者 github 提交 issue。
+- 如果有其他问题， 或者功能上不兼容的。可以邮件沟通 <qinaoye@xiao100.com>，或者 gitlab 提交 issue。
 
-## 赞助
-
-![pay.jpg](https://www.hxkj.vip/demo/calendar/pay.jpg)
